@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nobsnews</title>
+<meta name="description" content="The news you chose, with the clickbait, outrage and filler left out.">
+<link rel="canonical" href="https://nobsnews.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nobsnews">
+<meta property="og:title" content="Nobsnews: the news you chose, nothing else">
+<meta property="og:description" content="Pick your topics. We leave out the clickbait, the outrage and the filler.">
+<meta property="og:url" content="https://nobsnews.app/">
+<meta property="og:image" content="https://nobsnews.app/icons/social.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121210" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="style.css?v=cc457a6">
+</head>
+<body>
+<!-- page:start -->
+<div class="page">
+  <header class="masthead">
+    <div>
+      <h1 class="wordmark" aria-label="Nobsnews">no<s>bs</s>news</h1>
+      <p class="tagline">The news you chose. Nothing else.</p>
+    </div>
+    <button id="open-settings" class="btn tune" type="button" aria-expanded="false" aria-controls="settings" hidden>
+      <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+        <path d="M3 6h7M15 6h2M3 14h2M10 14h7"/><circle cx="12.5" cy="6" r="2.3"/><circle cx="7.5" cy="14" r="2.3"/></svg>
+      <span id="open-settings-label">Choose your news</span>
+    </button>
+  </header>
+
+  <section id="welcome" class="welcome" hidden>
+    <h2 class="hello">Hello. News without the nonsense.</h2>
+    <p class="lede">Pick what you care about. We read dozens of outlets and leave out the clickbait and the
+      outrage bait.</p>
+
+    <div id="examples" class="tray examples" hidden>
+      <p class="tray-head">Left out, last two days <b id="examples-count"></b></p>
+      <ul id="examples-list"></ul>
+    </div>
+
+    <p class="ask">Start with</p>
+    <div id="packs" class="packs"></div>
+    <button id="own-toggle" class="quiet" type="button" aria-expanded="false" aria-controls="own">Or pick your own topics</button>
+
+    <div id="own" class="own" hidden>
+      <div id="welcome-topics"></div>
+      <button id="welcome-done" class="btn primary" type="button">Show me my news</button>
+    </div>
+
+    <p class="note">No account and no email. Your choices stay on this device. You can change your topics,
+      and leave out more kinds of story, any time.</p>
+  </section>
+
+  <nav id="jump" class="jump" aria-label="Your sections" hidden></nav>
+
+  <div id="front" class="front" hidden>
+    <p id="dateline" class="dateline"></p>
+    <p id="greeting" class="greeting"></p>
+  </div>
+  <main id="stories">
+    <div class="skeleton" role="status" aria-label="Loading the news"><i></i><i></i><i></i><i></i><i></i></div>
+  </main>
+
+  <details id="left-out" class="tray left-out" hidden>
+    <summary id="left-out-count"></summary>
+    <ul id="left-out-list"></ul>
+  </details>
+
+  <footer><p id="small-print"></p></footer>
+</div>
+
+<section id="settings" class="sheet" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
+  <div class="sheet-panel">
+    <div class="sheet-body">
+      <h2 id="settings-title" class="sheet-title" tabindex="-1">Choose your news</h2>
+      <h3 class="set">Topics</h3>
+      <p class="hint">Tap the subjects you want to follow.</p>
+      <div id="topic-chips"></div>
+      <form id="add-keyword" class="row">
+        <input id="keyword-input" type="text" maxlength="40" autocomplete="off"
+               placeholder="A name or word, like Tesla" aria-label="Name or word to follow">
+        <button class="btn">Follow</button>
+      </form>
+      <ul id="keyword-chips" class="chips" style="margin-top:10px"></ul>
+
+      <h3 class="set">Leave out</h3>
+      <p class="hint">Kinds of story you don't want. Each one left out is listed at the bottom of the page with the reason.</p>
+      <ul id="leave-out" class="options"></ul>
+
+      <h3 class="set">Where from</h3>
+      <ul class="pairs">
+        <li><label for="region">Show stories about</label>
+          <select id="region"><option value="all">Everywhere</option><option value="au">Australia only</option>
+            <option value="world">The rest of the world only</option></select></li>
+      </ul>
+
+      <h3 class="set">How much</h3>
+      <ul class="pairs">
+        <li><label for="per-topic">Stories shown per topic</label>
+          <select id="per-topic"><option value="4">4</option><option value="6">6</option>
+            <option value="10">10</option><option value="0">All</option></select></li>
+        <li><label for="days">Go back</label>
+          <select id="days"><option value="1">1 day</option><option value="2">2 days</option>
+            <option value="3">3 days</option></select></li>
+      </ul>
+      <ul class="options" style="margin-top:10px">
+        <li><label><input id="big-only" type="checkbox">
+          <span>Only big stories<small>Hide minor and routine items, unless more than one outlet reported them.</small></span></label></li>
+      </ul>
+
+      <details class="fold">
+        <summary class="set">Sources <span id="outlet-count"></span></summary>
+        <p class="hint">Untick an outlet to stop seeing it.</p>
+        <ul id="outlets" class="options columns"></ul>
+      </details>
+
+      <div id="get-app">
+        <h3 class="set">Get the app</h3>
+        <p class="hint">Put Nobsnews on your home screen. It opens full screen like any app, and it's free.</p>
+        <button id="install" class="btn" type="button" hidden>Install Nobsnews</button>
+        <p id="install-how" class="hint" style="margin-top:8px">On an iPhone, open this page in Safari, tap the
+          Share button, then <b>Add to Home Screen</b>. On Android, open the browser's menu and choose
+          <b>Install app</b> or <b>Add to Home screen</b>.</p>
+      </div>
+
+      <h3 class="set">Start again</h3>
+      <p class="hint">Clears your choices on this device and shows the welcome again.</p>
+      <button id="reset" class="btn" type="button">Reset my choices</button>
+    </div>
+    <div class="sheet-foot">
+      <button id="settings-done" class="btn primary" type="button">Done</button>
+    </div>
+  </div>
+</section>
+<script src="app.js?v=cc457a6"></script>
+<!-- page:end -->
+</body>
+</html>
