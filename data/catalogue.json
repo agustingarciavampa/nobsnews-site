@@ -1,0 +1,102 @@
+[
+ {
+  "id": "australia",
+  "label": "Australia",
+  "about": "National news from around the country"
+ },
+ {
+  "id": "au-politics",
+  "label": "Australian politics",
+  "about": "Canberra, the states, elections and policy"
+ },
+ {
+  "id": "au-economy",
+  "label": "Rates and the economy",
+  "about": "The RBA, inflation, jobs and the cost of living"
+ },
+ {
+  "id": "property",
+  "label": "Property and housing",
+  "about": "Prices, rents, building and housing policy"
+ },
+ {
+  "id": "world",
+  "label": "World",
+  "about": "The main international news"
+ },
+ {
+  "id": "conflict",
+  "label": "War and conflict",
+  "about": "Wars, security and diplomacy"
+ },
+ {
+  "id": "us",
+  "label": "United States",
+  "about": "American politics and society"
+ },
+ {
+  "id": "asia",
+  "label": "Asia-Pacific",
+  "about": "China, Japan, India, South-East Asia and the Pacific"
+ },
+ {
+  "id": "business",
+  "label": "Business",
+  "about": "Companies, deals and industries"
+ },
+ {
+  "id": "markets",
+  "label": "Markets and investing",
+  "about": "Shares, bonds, currencies and commodities"
+ },
+ {
+  "id": "crypto",
+  "label": "Crypto",
+  "about": "Bitcoin, other cryptocurrencies and their regulation"
+ },
+ {
+  "id": "tech",
+  "label": "Technology",
+  "about": "The tech industry, gadgets, the internet and security"
+ },
+ {
+  "id": "ai",
+  "label": "Artificial intelligence",
+  "about": "AI companies, research, uses and rules"
+ },
+ {
+  "id": "science",
+  "label": "Science",
+  "about": "Research, space and discoveries"
+ },
+ {
+  "id": "health",
+  "label": "Health",
+  "about": "Medicine, public health and the health system"
+ },
+ {
+  "id": "climate",
+  "label": "Climate and environment",
+  "about": "Climate change, weather extremes and nature"
+ },
+ {
+  "id": "energy",
+  "label": "Energy",
+  "about": "Electricity, gas, oil and renewables"
+ },
+ {
+  "id": "ev",
+  "label": "Electric vehicles",
+  "about": "EVs, batteries and charging"
+ },
+ {
+  "id": "sport",
+  "label": "Sport",
+  "about": "Results, competitions and athletes"
+ },
+ {
+  "id": "entertainment",
+  "label": "Entertainment and culture",
+  "about": "Film, TV, music, books and the arts"
+ }
+]
